@@ -1,0 +1,8 @@
+.link {
+  padding: 8px 10px;
+  border-radius: 3px;
+}
+
+.link:hover {
+  background: rgba(0, 0, 0, .1);
+}

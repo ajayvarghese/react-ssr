@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchData } from "../store";
 import styles from "./../App.css";
+import homeStyles from "./Home.css";
 
 class Home extends React.Component {
     componentDidMount( ) {
@@ -14,7 +15,7 @@ class Home extends React.Component {
         const { circuits } = this.props;
 
         return (
-            <div className={ styles.wrapper }>
+            <div className={ styles.wrapper + " " + homeStyles.wrapper }>
                 <h2>F1 2018 Season Calendar</h2>
                 <ul>
                     { circuits.map( ( { circuitId, circuitName, Location } ) => (

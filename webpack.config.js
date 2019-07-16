@@ -3,6 +3,14 @@ const path = require( "path" );
 const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
 const FriendlyErrorsWebpackPlugin = require( "friendly-errors-webpack-plugin" );
 const MiniCssExtractPlugin = require( "mini-css-extract-plugin" );
+const genericNames = require( "generic-names" );
+
+const generate = genericNames( "[name]__[local]___[hash:base64:5]", {
+    context: process.cwd(),
+});
+
+const getLocalIdent = ( loaderContext, localIdentName, localName ) =>
+    generate( localName, loaderContext.resourcePath );
 
 const plugins = [
     new FriendlyErrorsWebpackPlugin(),
@@ -46,8 +54,9 @@ module.exports = {
                     }, {
                         loader: "css-loader",
                         options: {
-                            modules: true,
-                            localIdentName: "[name]__[local]___[hash:base64:5]",
+                            modules: {
+                                getLocalIdent,
+                            },
                         },
                     },
                 ],

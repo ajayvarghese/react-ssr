@@ -1,22 +1,22 @@
 {
   "presets": [
-      [ "env",
+      [ "@babel/preset-env",
           {
               "modules": false,
               "useBuiltIns": "usage"
           }
       ],
-      "react",
+      "@babel/preset-react",
       "jest"
   ],
   "plugins": [
     ["react-css-modules", {
-      "generateScopedName": "[name]__[local]___[hash:base64:5]"
+      "generateScopedName": "[name]__[local]___[hash:base64:5]",
     }]
   ],
   "env": {
       "test": {
-          "presets": ["react"],
+          "presets": ["@babel/preset-env", "@babel/preset-react"],
           "plugins": ["transform-es2015-modules-commonjs"]
       }
 
